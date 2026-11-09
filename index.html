@@ -3,56 +3,58 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Abdou — Systems-level Rust engineer</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<title>Abdou · Backend &amp; Systems Engineer</title>
+<meta name="description" content="Abdou, a BSc Computing student building Rust systems software. Creator of Helix, a Linux kernel-level gaming compatibility orchestrator. Open to backend and systems internships in Kuala Lumpur and remote Southeast Asia.">
+<meta property="og:title" content="Abdou · Backend &amp; Systems Engineer">
+<meta property="og:description" content="Rust systems software, Linux internals, and backend engineering. Creator of Helix. Based in Kuala Lumpur, Malaysia.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230c0c0a'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='34' font-weight='700' fill='%23f4f1ea' text-anchor='middle'%3EA%3C/text%3E%3Ccircle cx='50' cy='16' r='4' fill='%23d9572e'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Syne:wght@400;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
 :root {
-  --bg: #0a0a0f;
-  --surface: #111118;
-  --surface2: #16161f;
-  --border: #1e1e2e;
-  --text: #e2e2f0;
-  --muted: #6666aa;
+  --bg: #0c0c0a;
+  --surface: #161511;
+  --surface2: #1d1b15;
+  --border: #332f25;
+  --text: #f4f1ea;
+  --muted: #a8a495;
 
-  --accent: #00ff88;
-  --accent3: #4488ff;
-  --accent4: #ffaa00;
-  --accent2: #ff4466;
+  --accent: #d9572e;
+  --ok: #8fae6b;
+  --warn: #c99a3e;
 
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
-  --text-base: 1rem;
-  --text-lg: 1.25rem;
-  --text-xl: 1.75rem;
-  --text-2xl: 2.5rem;
-  --text-3xl: clamp(2.25rem, 5vw + 1rem, 4.25rem);
+  --text-base: 1.0625rem;
+  --text-md: 1.25rem;
+  --text-lg: 1.5rem;
+  --text-xl: 2rem;
+  --text-2xl: clamp(2.75rem, 6vw + 1rem, 4.5rem);
 
-  --font-mono: 'IBM Plex Mono', monospace;
-  --font-sans: 'Syne', sans-serif;
+  --font-serif: 'Fraunces', Georgia, serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
   --space-1: 0.5rem;
-  --space-2: 1rem;
-  --space-3: 1.5rem;
+  --space-2: 0.75rem;
+  --space-3: 1.25rem;
   --space-4: 2rem;
-  --space-5: 3rem;
-  --space-6: 4rem;
-  --space-7: 6rem;
-  --space-8: 8rem;
+  --space-5: 2.75rem;
+  --space-6: 3.5rem;
+  --space-7: 4.5rem;
 
-  --radius: 2px;
-  --border-width: 1px;
-  --rule-width: 2px;
-  --outline-width: 2px;
-  --max-width: 1100px;
-  --measure: 65ch;
+  --radius: 4px;
+  --radius-sm: 2px;
+  --max-width: 1120px;
+  --measure: 62ch;
   --tap-min: 44px;
 }
 
 * { box-sizing: border-box; }
-
 html { scroll-behavior: smooth; }
 
 body {
@@ -62,15 +64,24 @@ body {
   font-family: var(--font-sans);
   font-size: var(--text-base);
   line-height: 1.6;
-  background-image:
-    radial-gradient(ellipse 80% 40% at 50% -10%, rgba(0,255,136,0.06) 0%, transparent 70%),
-    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,0.015) 39px, rgba(255,255,255,0.015) 40px),
-    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,255,255,0.015) 39px, rgba(255,255,255,0.015) 40px);
+  position: relative;
+}
+
+/* subtle paper grain, no network cost */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 a { color: var(--muted); text-decoration: none; transition: color 0.15s ease; }
 a:hover, a:focus { color: var(--accent); }
-a:focus-visible { outline: var(--outline-width) solid var(--accent); outline-offset: 2px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
 .skip-link {
   position: absolute;
@@ -79,10 +90,10 @@ a:focus-visible { outline: var(--outline-width) solid var(--accent); outline-off
   background: var(--accent);
   color: var(--bg);
   padding: var(--space-1) var(--space-2);
-  border-radius: var(--radius);
+  border-radius: var(--radius-sm);
   font-family: var(--font-mono);
   font-size: var(--text-sm);
-  z-index: 100;
+  z-index: 200;
   text-decoration: none;
 }
 .skip-link:focus { top: var(--space-2); }
@@ -90,22 +101,26 @@ a:focus-visible { outline: var(--outline-width) solid var(--accent); outline-off
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 var(--space-2);
+  padding: 0 var(--space-3);
+  position: relative;
+  z-index: 1;
 }
 
-section { padding: var(--space-6) 0; }
-@media (min-width: 768px) {
-  section { padding: var(--space-8) 0; }
+section { padding: var(--space-5) 0; border-top: 1px solid var(--border); }
+section#top { border-top: none; padding-top: var(--space-6); padding-bottom: var(--space-4); }
+@media (min-width: 860px) {
+  section { padding: var(--space-7) 0; }
+  section#top { padding-top: var(--space-7); padding-bottom: var(--space-5); }
 }
 
 /* Header */
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 50;
-  background: color-mix(in srgb, var(--bg) 85%, transparent);
-  backdrop-filter: blur(6px);
-  border-bottom: var(--border-width) solid var(--border);
+  z-index: 100;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
 }
 .site-header .container {
   display: flex;
@@ -114,76 +129,133 @@ section { padding: var(--space-6) 0; }
   gap: var(--space-2);
   padding-top: var(--space-2);
   padding-bottom: var(--space-2);
-  flex-wrap: wrap;
 }
 .wordmark {
-  font-family: var(--font-sans);
-  font-weight: 800;
-  font-size: var(--text-lg);
+  font-family: var(--font-serif);
+  font-weight: 900;
+  font-size: var(--text-md);
   color: var(--text);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
 .wordmark:hover { color: var(--accent); }
+
+.nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: var(--tap-min);
+  padding: 0 var(--space-2);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.nav-toggle:hover { border-color: var(--accent); color: var(--accent); }
+.nav-toggle-icon { width: 16px; height: 11px; position: relative; display: inline-block; }
+.nav-toggle-icon span, .nav-toggle-icon::before, .nav-toggle-icon::after {
+  content: ''; position: absolute; left: 0; right: 0; height: 1.5px; background: currentColor;
+}
+.nav-toggle-icon::before { top: 0; }
+.nav-toggle-icon span { top: 50%; margin-top: -0.75px; }
+.nav-toggle-icon::after { bottom: 0; }
+
 .nav-links {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
-  flex-wrap: wrap;
+  gap: var(--space-4);
 }
 .nav-links a {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
+  font-weight: 500;
   font-size: var(--text-sm);
   color: var(--muted);
   min-height: var(--tap-min);
   display: inline-flex;
   align-items: center;
-  padding: 0 var(--space-1);
 }
 .nav-links a:hover, .nav-links a:focus { color: var(--accent); }
+.nav-links .btn { margin-left: var(--space-1); }
+
+@media (max-width: 859px) {
+  .nav-toggle { display: inline-flex; }
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease;
+  }
+  .nav-links.is-open { max-height: 320px; }
+  .nav-links a {
+    padding: var(--space-2) var(--space-3);
+    width: 100%;
+    border-top: 1px solid var(--border);
+  }
+  .nav-links .btn { margin: var(--space-2) var(--space-3); }
+}
+@media (min-width: 860px) {
+  .nav-toggle { display: none; }
+}
 
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: var(--tap-min);
-  padding: var(--space-1) var(--space-2);
-  border-radius: var(--radius);
-  font-family: var(--font-mono);
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-weight: 600;
   font-size: var(--text-sm);
   cursor: pointer;
-  border: var(--border-width) solid var(--border);
+  border: 1px solid var(--border);
   background: transparent;
   color: var(--text);
   text-decoration: none;
   transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
 }
-.btn:focus-visible { outline: var(--outline-width) solid var(--accent); outline-offset: 2px; }
-.btn-primary {
-  background: var(--accent);
-  color: var(--bg);
-  border-color: var(--accent);
-  font-weight: 600;
-}
+.btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.btn-primary { background: var(--accent); color: var(--bg); border-color: var(--accent); }
 .btn-primary:hover, .btn-primary:focus { filter: brightness(1.08); color: var(--bg); }
 .btn-ghost:hover, .btn-ghost:focus { border-color: var(--accent); color: var(--accent); }
 
 /* Hero */
+.kicker {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 var(--space-2) 0;
+}
 .hero-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-4);
   align-items: start;
 }
-@media (min-width: 768px) {
-  .hero-grid { grid-template-columns: 1fr 1fr; gap: var(--space-5); }
+@media (min-width: 860px) {
+  .hero-grid { grid-template-columns: 1.15fr 0.85fr; gap: var(--space-6); align-items: center; }
 }
 .hero h1 {
-  font-family: var(--font-sans);
-  font-weight: 800;
-  font-size: var(--text-3xl);
-  line-height: 1.05;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: var(--text-2xl);
+  line-height: 1.08;
   margin: 0 0 var(--space-3) 0;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
 .hero-body {
   font-size: var(--text-base);
@@ -195,106 +267,134 @@ section { padding: var(--space-6) 0; }
   display: flex;
   gap: var(--space-2);
   flex-wrap: wrap;
-  margin-bottom: var(--space-2);
+  margin-bottom: var(--space-3);
 }
-.availability {
+.status-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   color: var(--muted);
-  max-width: var(--measure);
+  flex-wrap: wrap;
+}
+.status-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--ok);
+  flex-shrink: 0;
 }
 
-/* Terminal panel */
-.terminal-panel {
-  background: var(--surface2);
-  border: var(--border-width) solid var(--border);
+/* At-a-glance info card */
+.info-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--accent);
   border-radius: var(--radius);
-  padding: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+}
+.info-card-label {
   font-family: var(--font-mono);
-  font-size: var(--text-sm);
-  line-height: 1.5;
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 var(--space-2) 0;
 }
-.terminal-dots {
+.info-rows { margin: 0; }
+.info-row {
   display: flex;
-  gap: var(--space-1);
-  margin-bottom: var(--space-2);
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding: var(--space-2) 0;
+  border-top: 1px solid var(--border);
 }
-.terminal-dots span {
-  width: var(--space-1);
-  height: var(--space-1);
-  border-radius: 50%;
-  background: var(--muted);
-  display: inline-block;
+.info-row:first-child { border-top: none; }
+.info-row dt {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  flex-shrink: 0;
+  padding-top: 0.15em;
 }
-.terminal-readout {
-  white-space: pre-wrap;
-  word-break: break-word;
+.info-row dd {
+  margin: 0;
+  text-align: right;
+  font-size: var(--text-sm);
   color: var(--text);
-  min-height: 8em;
+  max-width: 68%;
 }
 
 /* Proof strip */
 .proof-strip {
   font-family: var(--font-mono);
-  font-size: var(--text-sm);
+  font-size: var(--text-xs);
   color: var(--muted);
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-1);
   align-items: center;
-  border-top: var(--border-width) solid var(--border);
-  border-bottom: var(--border-width) solid var(--border);
-  padding: var(--space-2) 0;
+  padding: var(--space-3) 0;
 }
-.proof-strip .sep { color: var(--muted); }
+.proof-strip .sep { color: var(--border); }
 .proof-strip a { color: var(--muted); }
 .proof-strip a:hover, .proof-strip a:focus { color: var(--accent); }
 
 /* Section headings */
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-4) 0;
+}
+.section-num {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--accent);
+  letter-spacing: 0.06em;
+}
 .section-title {
-  font-family: var(--font-sans);
-  font-weight: 700;
+  font-family: var(--font-serif);
+  font-weight: 600;
   font-size: var(--text-xl);
   line-height: 1.15;
-  margin: 0 0 var(--space-3) 0;
+  margin: 0;
   color: var(--text);
-}
-.section-intro {
-  color: var(--muted);
-  max-width: var(--measure);
-  margin: 0 0 var(--space-4) 0;
 }
 
 /* Cards */
 .card {
   background: var(--surface);
-  border: var(--border-width) solid var(--border);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: var(--space-4);
   transition: border-color 0.15s ease;
 }
-.card:hover { border-color: color-mix(in srgb, var(--accent) 30%, transparent); }
+.card:hover { border-color: color-mix(in srgb, var(--accent) 45%, var(--border)); }
 .card-title {
-  font-family: var(--font-sans);
-  font-weight: 700;
+  font-family: var(--font-serif);
+  font-weight: 600;
   font-size: var(--text-lg);
   margin: 0 0 var(--space-2) 0;
   color: var(--text);
 }
-.code-line {
+.cmd {
   font-family: var(--font-mono);
   font-size: var(--text-sm);
   background: var(--surface2);
-  border: var(--border-width) solid var(--border);
-  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
   padding: var(--space-1) var(--space-2);
   display: inline-block;
   margin: 0 0 var(--space-2) 0;
-  color: var(--accent);
+  color: var(--text);
 }
+.cmd-prompt { color: var(--accent); margin-right: 0.5em; }
 .prompt-note {
   font-family: var(--font-mono);
   font-size: var(--text-sm);
+  font-style: italic;
   color: var(--muted);
   margin: 0 0 var(--space-3) 0;
 }
@@ -302,7 +402,15 @@ section { padding: var(--space-6) 0; }
   max-width: var(--measure);
   margin: 0 0 var(--space-3) 0;
 }
-.card p:last-child { margin-bottom: 0; }
+.card p:last-of-type { margin-bottom: 0; }
+.card code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.1em 0.35em;
+}
 
 .label {
   font-family: var(--font-mono);
@@ -310,7 +418,7 @@ section { padding: var(--space-6) 0; }
   color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  margin: var(--space-3) 0 var(--space-1) 0;
+  margin: var(--space-3) 0 var(--space-2) 0;
 }
 .label:first-of-type { margin-top: 0; }
 
@@ -320,7 +428,7 @@ section { padding: var(--space-6) 0; }
   margin: 0 0 var(--space-3) 0;
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-2);
+  gap: var(--space-2) var(--space-4);
 }
 @media (min-width: 768px) {
   .highlights { grid-template-columns: 1fr 1fr; }
@@ -333,7 +441,7 @@ section { padding: var(--space-6) 0; }
   max-width: none;
 }
 .highlights li::before {
-  content: '→';
+  content: '\2192';
   position: absolute;
   left: 0;
   color: var(--muted);
@@ -343,10 +451,12 @@ section { padding: var(--space-6) 0; }
 .status-line {
   font-family: var(--font-mono);
   font-size: var(--text-sm);
-  color: var(--accent4);
+  color: var(--muted);
   margin: var(--space-3) 0;
   max-width: var(--measure);
 }
+.status-ok { color: var(--ok); }
+.status-progress { color: var(--warn); }
 
 .tags {
   display: flex;
@@ -356,8 +466,8 @@ section { padding: var(--space-6) 0; }
 }
 .tag {
   background: var(--surface2);
-  border: var(--border-width) solid var(--border);
-  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
   padding: 0.25rem var(--space-1);
   font-family: var(--font-mono);
   font-size: var(--text-xs);
@@ -365,7 +475,8 @@ section { padding: var(--space-6) 0; }
 }
 
 .link-arrow {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
+  font-weight: 600;
   font-size: var(--text-sm);
   color: var(--accent);
   display: inline-block;
@@ -373,57 +484,42 @@ section { padding: var(--space-6) 0; }
 }
 .link-arrow:hover { text-decoration: underline; text-underline-offset: 3px; }
 
-/* Helix featured full width */
 .card-featured { width: 100%; }
-
-/* Stock card narrower, left-aligned */
-.card-secondary {
-  max-width: 40rem;
-  margin-top: var(--space-4);
-}
+.card-secondary { max-width: 42rem; margin-top: var(--space-4); }
 
 /* Experience timeline */
 .timeline {
   position: relative;
-  border-left: var(--rule-width) solid var(--border);
+  border-left: 2px solid var(--border);
   padding-left: var(--space-4);
   margin-left: var(--space-1);
 }
-.timeline-item {
-  margin-bottom: var(--space-5);
-  position: relative;
-}
+.timeline-item { margin-bottom: var(--space-4); position: relative; }
+.timeline-item:last-child { margin-bottom: 0; }
 .timeline-item::before {
   content: '';
   position: absolute;
-  left: calc(-1 * var(--space-4) - var(--rule-width) / 2 + 1px);
+  left: calc(-1 * var(--space-4) - 1px);
   top: 0.5rem;
-  width: var(--space-1);
-  height: var(--space-1);
+  width: 7px; height: 7px;
   border-radius: 50%;
   background: var(--accent);
 }
 .timeline-date {
   font-family: var(--font-mono);
-  font-size: var(--text-sm);
+  font-size: var(--text-xs);
   color: var(--muted);
   margin: 0 0 var(--space-1) 0;
 }
 .timeline-title {
-  font-family: var(--font-sans);
-  font-weight: 700;
-  font-size: var(--text-lg);
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: var(--text-md);
   margin: 0 0 var(--space-1) 0;
 }
-.timeline-body {
-  font-size: var(--text-base);
-  color: var(--text);
-  max-width: var(--measure);
-  margin: 0;
-}
-.timeline-item-light .timeline-title { font-size: var(--text-base); font-weight: 400; color: var(--muted); }
+.timeline-body { font-size: var(--text-base); color: var(--text); max-width: var(--measure); margin: 0; }
+.timeline-item-light .timeline-title { font-size: var(--text-base); font-weight: 600; color: var(--muted); }
 .timeline-item-light .timeline-body { font-size: var(--text-sm); color: var(--muted); }
-.timeline-item-light .timeline-date { font-size: var(--text-xs); }
 
 /* Skills */
 .skill-line {
@@ -431,60 +527,61 @@ section { padding: var(--space-6) 0; }
   flex-direction: column;
   gap: var(--space-1);
   padding: var(--space-2) 0;
-  border-bottom: var(--border-width) solid var(--border);
+  border-top: 1px solid var(--border);
 }
-.skill-line:last-child { border-bottom: none; }
+.skill-line:first-child { border-top: none; }
 .skill-label {
-  font-family: var(--font-mono);
-  font-size: var(--text-sm);
-  font-weight: 600;
-  color: var(--accent);
-}
-.skill-tags {
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-1);
+  align-items: center;
+  gap: 0.5em;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--text);
 }
+.skill-label::before {
+  content: '';
+  width: 7px; height: 7px;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+.skill-tags { display: flex; flex-wrap: wrap; gap: var(--space-1); }
 .skill-tag {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
-  color: var(--text);
+  color: var(--muted);
   background: var(--surface2);
-  border: var(--border-width) solid var(--border);
-  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
   padding: 0.25rem var(--space-1);
 }
 
-/* About / Contact narrow column */
-.narrow {
-  max-width: var(--measure);
-}
+.narrow { max-width: var(--measure); }
 .narrow p { margin: 0 0 var(--space-3) 0; }
+.narrow p:last-child { margin-bottom: 0; }
 .contact-links {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2);
-  font-family: var(--font-mono);
+  gap: var(--space-3);
+  font-family: var(--font-sans);
+  font-weight: 600;
   font-size: var(--text-sm);
   margin-top: var(--space-3);
 }
-.headshot { display: none; }
+.contact-links a { color: var(--text); }
+.contact-links a:hover { color: var(--accent); }
 
-/* Footer */
 .site-footer {
-  border-top: var(--border-width) solid var(--border);
+  border-top: 1px solid var(--border);
   padding: var(--space-4) 0;
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   color: var(--muted);
-  max-width: var(--measure);
 }
-.footer-line { margin-top: var(--space-2); }
+.site-footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--space-2); }
 
-/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .terminal-readout { animation: none; }
 }
 
 h1, h2, h3 { color: var(--text); }
@@ -496,7 +593,11 @@ h1, h2, h3 { color: var(--text); }
 <header class="site-header">
   <div class="container">
     <a class="wordmark" href="#top">Abdou</a>
-    <nav class="nav-links" aria-label="Primary">
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primary-nav">
+      <span class="nav-toggle-icon" aria-hidden="true"><span></span></span>
+      Menu
+    </button>
+    <nav class="nav-links" id="primary-nav" aria-label="Primary">
       <a href="#work">Work</a>
       <a href="#experience">Experience</a>
       <a href="#about">About</a>
@@ -511,17 +612,23 @@ h1, h2, h3 { color: var(--text); }
     <div class="container">
       <div class="hero-grid">
         <div>
+          <p class="kicker">Backend / Systems Engineer</p>
           <h1>Systems-level Rust engineer. Full-stack when the job needs it.</h1>
-          <p class="hero-body">I'm Abdou — BSc Computing student at RIT Dubai. I built Helix, a Rust CLI that reaches into the Linux kernel so Windows games run right with zero config, and I've shipped backend integrations (WhatsApp Business API, payment gateway testing) at a live startup. Open to backend and systems engineering internships.</p>
+          <p class="hero-body">I'm Abdou, a BSc Computing student at RIT Dubai. I built Helix, a Rust CLI that reaches into the Linux kernel so Windows games run right with zero configuration. I've also shipped backend work at a live startup: WhatsApp Business API integration and payment-gateway testing. Open to backend and systems engineering internships.</p>
           <div class="hero-buttons">
             <a class="btn btn-primary" href="#work">See the work</a>
             <a class="btn btn-ghost" href="resume.pdf" target="_blank" rel="noopener noreferrer">Résumé</a>
           </div>
-          <p class="availability">📍 Dubai, UAE — open to Malaysia / remote SEA · Available for a 3-month internship, immediate start</p>
+          <p class="status-row"><span class="status-dot" aria-hidden="true"></span> Kuala Lumpur, Malaysia · Available now · Open to remote SEA roles</p>
         </div>
-        <div class="terminal-panel" aria-label="Helix terminal readout">
-          <div class="terminal-dots"><span></span><span></span><span></span></div>
-          <pre class="terminal-readout" id="terminal"></pre>
+        <div class="info-card" aria-label="At a glance">
+          <p class="info-card-label">At a glance</p>
+          <dl class="info-rows">
+            <div class="info-row"><dt>Status</dt><dd>Open to internships, immediate start</dd></div>
+            <div class="info-row"><dt>Based</dt><dd>Kuala Lumpur, Malaysia</dd></div>
+            <div class="info-row"><dt>Focus</dt><dd>Rust · Linux systems · backend</dd></div>
+            <div class="info-row"><dt>Languages</dt><dd>EN / FR / AR</dd></div>
+          </dl>
         </div>
       </div>
     </div>
@@ -529,34 +636,35 @@ h1, h2, h3 { color: var(--text); }
 
   <div class="container">
     <div class="proof-strip" role="list">
-      <a role="listitem" href="http://training.linuxfoundation.org/certification/verify">KCNA — Kubernetes &amp; Cloud Native Associate (CNCF, Oct 2026)</a>
+      <a role="listitem" href="http://training.linuxfoundation.org/certification/verify">KCNA · Kubernetes &amp; Cloud Native Associate (CNCF, Oct 2026)</a>
       <span class="sep" aria-hidden="true">·</span>
       <span role="listitem">Rust · Java · Python · Node.js</span>
       <span class="sep" aria-hidden="true">·</span>
-      <span role="listitem">RIT Dubai — BSc Computing</span>
-      <span class="sep" aria-hidden="true">·</span>
-      <span role="listitem">EN · FR · AR fluent</span>
+      <span role="listitem">RIT Dubai · BSc Computing</span>
     </div>
   </div>
 
   <section id="work">
     <div class="container">
-      <h2 class="section-title">Work</h2>
+      <div class="section-head">
+        <span class="section-num" aria-hidden="true">01</span>
+        <h2 class="section-title">Work</h2>
+      </div>
       <article class="card card-featured">
         <h3 class="card-title">Helix — Linux Gaming Compatibility Orchestrator</h3>
-        <div class="code-line">helix game.exe</div>
-        <p class="prompt-note">— and that's the whole user manual.</p>
-        <p><strong>Problem:</strong> Running a Windows game well on Linux means manually juggling Wine prefixes, DXVK configs, kernel sysctl values, GPU power states, and anti-cheat compatibility — across half a dozen tools that each solve one piece of it.</p>
-        <p><strong>What I built:</strong> A distro-agnostic Rust CLI that detects your hardware and the game binary, decides the right Proton/DXVK/VKD3D-Proton configuration, and applies only the tweaks that game actually needs — through a strict Plan → Confirm → Execute flow, so nothing touches your system without sign-off.</p>
+        <div class="cmd"><span class="cmd-prompt">$</span>helix game.exe</div>
+        <p class="prompt-note">That's the whole user manual.</p>
+        <p><strong>Problem:</strong> running a Windows game well on Linux means manually juggling Wine prefixes, DXVK configs, kernel sysctl values, GPU power states, and anti-cheat compatibility, across half a dozen tools that each solve one piece of it.</p>
+        <p><strong>What I built:</strong> a distro-agnostic Rust CLI that detects your hardware and the game binary, decides the right Proton/DXVK/VKD3D-Proton configuration, and applies only the tweaks that game actually needs, through a strict Plan → Confirm → Execute flow, so nothing touches your system without sign-off.</p>
         <p class="label">Technical highlights</p>
         <ul class="highlights">
-          <li>Static PE binary analysis (<code>goblin</code>) reads DirectX version, anti-cheat, and engine straight from the executable's import table — no running untrusted code to find out what it needs.</li>
-          <li>12+ system tweaks (fsync/esync, <code>vm.max_map_count</code>, THP mode, <code>sched_autogroup</code>, GPU clock locking) live as typed data in a tweak registry, not branching logic — adding tweak #50 never touches the orchestrator.</li>
+          <li>Static PE binary analysis (<code>goblin</code>) reads DirectX version, anti-cheat, and engine straight from the executable's import table. No running untrusted code to find out what it needs.</li>
+          <li>12+ system tweaks (fsync/esync, <code>vm.max_map_count</code>, THP mode, <code>sched_autogroup</code>, GPU clock locking) live as typed data in a tweak registry, not branching logic. Adding tweak #50 never touches the orchestrator.</li>
           <li>Every persistent system change writes a rollback manifest <em>before</em> it's applied; <code>helix --undo</code> reverses it. Session-scoped changes restore automatically via Rust Drop guards, even on a crash.</li>
-          <li>Privilege separation: the main binary never runs as root. A minimal <code>helix-helper</code> companion, invoked through polkit, accepts only a hardcoded whitelist of sysctl/sysfs writes — no shell interpolation anywhere in the codebase.</li>
+          <li>Privilege separation: the main binary never runs as root. A minimal <code>helix-helper</code> companion, invoked through polkit, accepts only a hardcoded whitelist of sysctl/sysfs writes. No shell interpolation anywhere in the codebase.</li>
           <li>Zero <code>.unwrap()</code> outside tests. Every failure path returns a typed, actionable error.</li>
         </ul>
-        <p class="status-line">✓ Architecture, detection, and planning pipeline complete and tested; verified end-to-end on real hardware; ⟳ broader title coverage and AMD GPU support are the active roadmap.</p>
+        <p class="status-line"><span class="status-ok">✓ Shipped:</span> architecture, detection, and planning pipeline, verified end-to-end on real hardware. <span class="status-progress">⟳ In progress:</span> broader title coverage, AMD GPU support.</p>
         <div class="tags">
           <span class="tag">Rust</span>
           <span class="tag">Linux</span>
@@ -568,7 +676,7 @@ h1, h2, h3 { color: var(--text); }
 
       <article class="card card-secondary">
         <h3 class="card-title">Stock Sentiment Screener</h3>
-        <p>A Rust tool that scores market sentiment in real time — pulling live data from Alpha Vantage and NewsAPI, running news through FinBERT for sentiment scoring, and serving it over a REST API backed by MariaDB via SQLx.</p>
+        <p>A Rust tool that scores market sentiment in real time, pulling live data from Alpha Vantage and NewsAPI, running news through FinBERT for sentiment scoring, and serving it over a REST API backed by MariaDB via SQLx.</p>
         <div class="tags">
           <span class="tag">Rust</span>
           <span class="tag">REST API</span>
@@ -581,7 +689,10 @@ h1, h2, h3 { color: var(--text); }
 
   <section id="experience">
     <div class="container">
-      <h2 class="section-title">Experience</h2>
+      <div class="section-head">
+        <span class="section-num" aria-hidden="true">02</span>
+        <h2 class="section-title">Experience</h2>
+      </div>
       <div class="timeline">
         <div class="timeline-item">
           <p class="timeline-date">Dec 2025 – Feb 2026 · Remote</p>
@@ -599,8 +710,11 @@ h1, h2, h3 { color: var(--text); }
 
   <section id="skills">
     <div class="container">
-      <h2 class="section-title">Skills</h2>
-      <div class="narrow">
+      <div class="section-head">
+        <span class="section-num" aria-hidden="true">03</span>
+        <h2 class="section-title">Skills</h2>
+      </div>
+      <div class="narrow" style="max-width: 48rem;">
         <div class="skill-line">
           <span class="skill-label">Systems &amp; backend</span>
           <div class="skill-tags">
@@ -637,17 +751,22 @@ h1, h2, h3 { color: var(--text); }
 
   <section id="about">
     <div class="container">
-      <h2 class="section-title">About</h2>
+      <div class="section-head">
+        <span class="section-num" aria-hidden="true">04</span>
+        <h2 class="section-title">About</h2>
+      </div>
       <div class="narrow">
-        <!-- <img src="headshot.webp" alt="Abdou" class="headshot"> -->
-        <p>I'm a BSc Computing student at RIT Dubai who ended up building Linux kernel tweaks for fun. Helix exists because I actually run this setup — Fedora 43, an RTX 3050, modded Cyberpunk 2077 and RDR2 — and got tired of hand-tuning sysctl values every time I wanted to play something. I gravitate toward problems where the constraint is "this has to actually be correct," which is most of why I lean backend/systems over UI.</p>
+        <p>I'm a BSc Computing student at RIT Dubai who ended up building Linux kernel tweaks for fun. Helix exists because I run this setup myself: Fedora 43, an RTX 3050, modded Cyberpunk 2077 and RDR2. I got tired of hand-tuning sysctl values every time I wanted to play something. I gravitate toward problems where the constraint is "this has to actually be correct," which is most of why I lean backend/systems over UI.</p>
       </div>
     </div>
   </section>
 
   <section id="contact">
     <div class="container">
-      <h2 class="section-title">Contact</h2>
+      <div class="section-head">
+        <span class="section-num" aria-hidden="true">05</span>
+        <h2 class="section-title">Contact</h2>
+      </div>
       <div class="narrow">
         <div class="contact-links">
           <a href="mailto:abderrahmane.naitbrahim@gmail.com">Email</a>
@@ -655,7 +774,7 @@ h1, h2, h3 { color: var(--text); }
           <a href="https://github.com/abdoumarkaba">GitHub</a>
           <a href="resume.pdf" target="_blank" rel="noopener noreferrer">Résumé (PDF)</a>
         </div>
-        <p class="footer-line">Available for a 3-month internship, immediate start. Based in Dubai, open to Malaysia / remote SEA roles.</p>
+        <p class="footer-line" style="margin-top: var(--space-3); color: var(--muted); font-size: var(--text-sm);">Available for a 3-month internship, immediate start. Based in Kuala Lumpur, Malaysia, open to remote roles across Southeast Asia.</p>
       </div>
     </div>
   </section>
@@ -663,44 +782,34 @@ h1, h2, h3 { color: var(--text); }
 
 <footer class="site-footer">
   <div class="container">
-    <span>© Abdou</span>
+    <span>© <span id="year"></span> Abdou</span>
+    <span>Kuala Lumpur, Malaysia</span>
   </div>
 </footer>
 
 <script>
 (function () {
-  const lines = [
-    '$ helix cyberpunk2077.exe',
-    '→ Detecting hardware...',
-    '✓ GPU: NVIDIA RTX 3050 (Mesa 24.x)',
-    '✓ Kernel 6.11 — fsync supported',
-    '⟳ Selecting runner: ProtonGE 9.x',
-    '✓ Plan ready. Launching.'
-  ];
-  const el = document.getElementById('terminal');
-  if (!el) return;
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduced) {
-    el.textContent = lines.join('\n');
-    return;
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  var toggle = document.getElementById('navToggle');
+  var nav = document.getElementById('primary-nav');
+  if (!toggle || !nav) return;
+  function closeNav() {
+    nav.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
   }
-  let i = 0, ci = 0, current = '', output = [];
-  function type() {
-    if (i >= lines.length) return;
-    const line = lines[i];
-    if (ci < line.length) {
-      current += line[ci++];
-      el.textContent = output.concat(current).join('\n');
-      setTimeout(type, 12);
-    } else {
-      output.push(current);
-      current = '';
-      ci = 0;
-      i++;
-      if (i < lines.length) setTimeout(type, 80);
-    }
-  }
-  setTimeout(type, 200);
+  toggle.addEventListener('click', function () {
+    var open = nav.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  nav.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') closeNav();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeNav();
+  });
+  window.matchMedia('(min-width: 860px)').addEventListener('change', closeNav);
 })();
 </script>
 </body>
